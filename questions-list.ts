@@ -13,9 +13,15 @@ export const questionList: QuestionParams[] = [
     categories: ["Array", "Binary Search", "Divide and Conquer"]
   },
   {
-    name: "Two-sum",
-    param: "two-sum",
+    name: "Valid-Palindrome",
+    param: "valid-palindrome",
     difficulty: "Easy",
-    categories: ["HashMap", "Array", "Brute Force"]
+    categories: ["String", "Two Pointers"]
   },
+  {
+    name: "Is-Anagram",
+    param: "is-anagram",
+    difficulty: "Easy",
+    categories: ["String", "HashMap"]
+  }
 ];

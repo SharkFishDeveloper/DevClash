@@ -105,37 +105,37 @@ export default function ProblemSolve() {
     setIsSubmitting(true);
 
     try {
-      // const langKey = getLangKey(language);
-      // const langMeta = question.code?.[langKey];
-      // if (!langMeta) return;
+      const langKey = getLangKey(language);
+      const langMeta = question.code?.[langKey];
+      if (!langMeta) return;
 
-      // const fullCode = `${code}\n\n${langMeta.wrapper}`;
-      // const finalCodeObject = JudgeFormat(question, fullCode, language);
-      // const testCaseResults = await submitCode(finalCodeObject, question);
+      const fullCode = `${code}\n\n${langMeta.wrapper}`;
+      const finalCodeObject = JudgeFormat(question, fullCode, language);
+      const testCaseResults = await submitCode(finalCodeObject, question);
 
-      // let passedCount = 0;
+      let passedCount = 0;
       let failedCount = 0;
-      // let failedTest;
+      let failedTest;
 
-      // for (const result of testCaseResults) {
-      //   if (result.passed) {
-      //     passedCount++;
-      //   } else {
-      //     failedCount++;
-      //     if (!failedTest) {
-      //       failedTest = {
-      //         test: result.test,
-      //         expected: result.expected,
-      //         received: result.received,
-      //       };
-      //     }
-      //   }
-      // }
+      for (const result of testCaseResults) {
+        if (result.passed) {
+          passedCount++;
+        } else {
+          failedCount++;
+          if (!failedTest) {
+            failedTest = {
+              test: result.test,
+              expected: result.expected,
+              received: result.received,
+            };
+          }
+        }
+      }
       if(failedCount === 0){
         // make redis call and increase the problem count and avg time
         await redisUpdateFunction(question.slug,elapsed);
       }
-      // setTestResultSummary({ passedCount, failedCount, failedTest });
+      setTestResultSummary({ passedCount, failedCount, failedTest });
     } catch (err) {
       console.error('Submission error:', err);
     } finally {
