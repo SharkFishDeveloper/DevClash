@@ -17,7 +17,7 @@ const Navbar = () => {
           href="/"
           className="text-2xl font-extrabold text-black hover:text-gray-700 transition duration-200"
         >
-          LeetForce
+          DevClash
         </Link>
 
         {/* Desktop Menu */}
