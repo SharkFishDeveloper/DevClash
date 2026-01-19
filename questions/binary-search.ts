@@ -56,6 +56,7 @@ rl.on('close', () => {
   const result = binarySearch(arr, target);
   console.log(result);
 });
+
 `,
     },
 
